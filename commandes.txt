@@ -1,0 +1,94 @@
+### SET UP
+
+# Docker
+docker compose build
+docker compose up -d
+
+# Symfony
+docker exec -it php8-sf6_cont bash // enter into php bash
+symfony new PROJECT // initialize project
+cd ./PROJET_NAME
+symfony serve -d // launch server
+symfony serve:stop // stop server
+
+# Angular-Node
+docker exec -it angular_node_cont bash // enter into php bash
+ng new FILE_NAME --style=scss --skip-tests --skip-git // use css style, skip test and git
+For correct work with angular app you must fix package.json
+    "scripts":{
+        "ng": "ng",
+        "start": "ng serve --host 0.0.0.0 --poll=1000",
+        ...
+    }
+    
+cd ./PROJET_NAME
+npm start // start the server
+
+### COMMANDS
+
+# Symfony
+
+composer require symfony/maker-bundle --dev
+composer require orm
+composer require orm-fixtures --dev // generate fixture
+composer require symfony/serializer-pack // install serializer
+composer require sensio/framework-extra-bundle
+composer require nelmio/cors-bundle // add security bundle
+
+composer require willdurand/hateoas-bundle
+composer require nelmio/api-doc-bundle // install nelmio, say Y to recipe question
+composer require twig asset
+composer require symfony/http-client // install http client
+composer require api // install api plateform
+
+php bin/console make:entity // create an entity or ad new field if entity already exist
+
+create .env.local
+change DATABASE_URL="mysql://root:password@mysql:3306/ENTITY_NAME" // connect to the Database and create Books (db)
+
+php bin/console doctrine:database:create // create a database
+php bin/console doctrine:schema:update --force // update database
+
+access to th edatabse with :
+    user : root
+    password : password
+
+php bin/console doctrine:fixtures:load // execute fixture
+
+php bin/console make:migration // create migration of the entity
+php bin/console doctrine:migrations:migrate // did the migration
+
+php bin/console make:controller // create controller
+php bin/console debug:router // get used routes, important to not have routes with method ANY to not create conflicts
+
+composer require nelmio/cors-bundle // add security bundle
+
+after add this require, in nelmio_cors.yaml copy :
+    paths:
+        '^/api/':
+            allow_origin: ['*']
+            allow_headers: ['*']
+            allow_methods: ['POST', 'PUT', 'GET', 'DELETE']
+            max_age: 3600
+
+
+php bin/console make:subscriber // create subscriber to manage exception
+
+composer require symfony/validator doctrine/annotations // import validator
+
+composer require security // package for authentification
+php bin/console make:user // create user
+
+composer require lexik/jwt-authentication-bundle // tool for manage token
+create folder /jwt in /config & tap the command under to create key, don't forget to be place in good repository
+openssl genpkey -out config/jwt/private.pem -aes256 -algorithm rsa -pkeyopt rsa_keygen_bits:4096 // create private key
+mdp: guillaume
+openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout // create public key
+pass phrase: guillaume
+copy the passphrase in the .env.local (not the .env for security)
+
+php bin/console cache:clear // clear cache
+
+# Angular
+ng generate component COMPONENT_NAME // create new component
+ng generate service user // create new service

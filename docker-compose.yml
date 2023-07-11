@@ -1,0 +1,49 @@
+version: '3.8'
+services:
+    php8-sf6:
+        container_name: php8-sf6_cont
+        build: .docker/php
+        ports:
+            - "8000:8000"
+        volumes:
+            - ${SYMFONY_APP}:/app/back # will create project in this file
+        depends_on:
+            - "mysql"
+
+    mysql:
+        image: mysql:8
+        container_name: mysql_cont
+        ports:
+            - '3306:3306'
+        environment:
+            MYSQL_USER: 'user'
+            MYSQL_PASSWORD: 'password'
+            MYSQL_ROOT_PASSWORD: 'password'
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: phpmyadmin_cont
+        restart: always
+        ports:
+            - 8080:80
+        links:
+            - mysql
+        environment:
+          PMA_HOST: mysql
+
+    node:
+        container_name: angular_node_cont
+        build: .docker/node
+        ports :
+            - 4200:4200
+        tty: true
+        volumes:
+            - ${ANGULAR_APP}:/app/front # will create project in this file
+        # command: bash -c "npm start"
+
+#     mailer:
+#         image: schickling/mailcatcher
+#         ports: [1025, 1080]
+
+# volumes:
+#   db-data:
