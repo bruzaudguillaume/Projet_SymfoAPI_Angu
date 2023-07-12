@@ -32,7 +32,7 @@ composer require symfony/maker-bundle --dev
 composer require orm
 composer require orm-fixtures --dev // generate fixture
 composer require symfony/serializer-pack // install serializer
-composer require sensio/framework-extra-bundle
+composer require sensio/framework-extra-bundle // fix delete method problem
 composer require nelmio/cors-bundle // add security bundle
 
 composer require willdurand/hateoas-bundle
