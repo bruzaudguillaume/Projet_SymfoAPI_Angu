@@ -33,6 +33,12 @@ export class ArtistsService {
    * @param url
    */
   public getArtist(): Observable<Artist[]> {
-    return this.http.get<Artist[]>(this.url, httpOptions)
+    return this.http.get<Artist[]>(this.url, httpOptions);
   }
+
+  public deleteArtist(id: number): Observable<any> {
+    return this.http.delete(this.url, httpOptions);
+  }
+
+
 }
