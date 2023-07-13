@@ -1,0 +1,43 @@
+<div class="container-xl">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4><b>Manage Artists</b></h4>
+            </div>
+            <div class="col-sm-6">
+              <button class="btn btn-success" (click)="CreateArtist()">
+                <i class='fas fa-plus-circle'></i><span> ADD</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <table class="table table-striped table-hover table-bordered table-content">
+          <thead>
+            <tr class="center-align">
+              <th>ID</th>
+              <th>Name</th>
+              <th>Year Of Birth</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let artist of artistsList" class="center-align">
+              <td>{{ artist.id }}</td>
+              <td>{{ artist.name }}</td>
+              <td>{{ artist.yearOfBirth }}</td>
+              <td>
+                <a href="#" [routerLink]="['/ArtistDetail/', artist.id]" class="btn btn-success">Info</a>
+                <a href="#" [routerLink]="['/UpdateArtist/', artist.id]" class="btn btn-primary">Update</a>
+                <button type="button" (click)="deleteArtist(artist)" class="btn btn-danger">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td *ngIf="artistsList.length == 0" colspan="6">No Artist Found</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

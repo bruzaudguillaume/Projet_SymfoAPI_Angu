@@ -91,4 +91,4 @@ php bin/console cache:clear // clear cache
 
 # Angular
 ng generate component COMPONENT_NAME // create new component
-ng generate service user // create new service
+ng generate service services/user // create new service
