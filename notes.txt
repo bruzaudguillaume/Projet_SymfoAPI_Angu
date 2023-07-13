@@ -1,0 +1,7 @@
+probleme de route :
+- Artiste create : après click ne renvoit pas a la page /ArtistList OK
+- Artist delete : après click ne renvoit pas a la page /ArtistList OK
+- Artist update : après click ne renvoit pas a la page /ArtistDetail OK
+
+ArtistUpdate:
+- n affiche pas les informations actuelles de l artist OK

@@ -1,0 +1,32 @@
+<div class="container-xl">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4><b>View Employee</b></h4>
+            </div>
+            <div class="col-sm-6">
+              <a href="#" routerLink="/ArtistsList" class="btn btn-success back">Back</a>
+            </div>
+          </div>
+        </div>       
+        <table class="table table-striped table-hover table-bordered table-conten">
+          <tbody>
+            <tr>
+              <td><label><b>Id</b></label></td>
+              <td><span>{{ artistDetail.id }}</span></td>
+            </tr>
+            <tr>
+              <td><label><b>Name</b></label> </td>
+              <td><span>{{ artistDetail.name }}</span></td>
+            </tr>
+            <tr>
+              <td> <label><b>Year Of Birth</b></label></td>
+              <td> <span>{{ artistDetail.yearOfBirth }}</span></td>
+            </tr>
+          </tbody>
+        </table>       
+      </div>
+    </div>
+  </div>
