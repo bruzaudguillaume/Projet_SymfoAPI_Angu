@@ -9,6 +9,7 @@ import { ArtistDetailComponent } from './artist-detail/artist-detail.component';
 import { ArtistCreateComponent } from './artist-create/artist-create.component';
 import { FormsModule } from '@angular/forms';
 import { ArtistUpdateComponent } from './artist-update/artist-update.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ArtistUpdateComponent } from './artist-update/artist-update.component';
     ArtistsListComponent,
     ArtistDetailComponent,
     ArtistCreateComponent,
-    ArtistUpdateComponent
+    ArtistUpdateComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
